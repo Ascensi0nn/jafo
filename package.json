@@ -1,0 +1,23 @@
+{
+  "name": "jafo",
+  "version": "1.0.0",
+  "description": "just another file manager",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "run": "main.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "jafo"
+  },
+  "keywords": [
+    "file",
+    "organizer"
+  ],
+  "author": "Owen Luts, Jack Barter",
+  "license": "UNLICENSED",
+  "devDependencies": {
+    "electron": "^27.0.2"
+  }
+}
