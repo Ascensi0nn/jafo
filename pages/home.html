@@ -6,18 +6,17 @@
 
     <link rel="stylesheet" href="../public/styles/home.css">
 
-    <title>jafo - just another file organizer</title>
-    <script src="../public/scripts/home.js"></script>
-    <!-- font awesome -->
+    <title>Just Another File Organizer</title>
+    
 </head>
 <body>
     <div id="holder">
         <div id="left-box" class="box">
-            <img id="logo-icon" src="../public/icons/elephant.png" alt="">
+            <img id="logo-icon" src="../public/icons/jafo.png" draggable="false">
         </div>
         <div id="right-box" class="box">
             <div id="open-file" class="button-holder" onclick="handleChooseFolder()">
-                <img id="folder-icon" src="../public/icons/folder.png" alt="">
+                <img id="folder-icon" src="../public/icons/folder.png" draggable="false">
                 <p id="open-file-txt">Choose Folder</p>
             </div>
             <div id="or-holder" class="button-holder">
@@ -30,5 +29,8 @@
             </div>
         </div>
     </div>
+
+    <script src="../public/scripts/global.js"></script>
+    <script src="../public/scripts/home.js"></script>
 </body>
 </html>

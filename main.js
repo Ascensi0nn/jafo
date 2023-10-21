@@ -11,7 +11,7 @@ if(env === 'development') {
 }
 
 /*
- IPC
+	IPC
 */
 
 const global = {
@@ -33,7 +33,7 @@ ipcMain.handle('chooseFolder', async (event) => {
 });
 
 /*
- WINDOW
+	WINDOW
 */
 
 const createWindow = () => {
