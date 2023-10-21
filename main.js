@@ -1,5 +1,5 @@
 const { app, BrowserWindow, ipcMain, dialog } = require('electron');
-const path = require('path') 
+const path = require('path');
 const env = process.env.NODE_ENV || 'development'; 
   
 // If development environment
@@ -19,17 +19,17 @@ const global = {
 };
 
 
+ipcMain.handle('chooseFolder', async (event) => {
+	return dialog.showOpenDialog(BrowserWindow.fromWebContents(event.sender), {
+        properties: ['openDirectory']
+    });
+});
 ipcMain.handle('getConfig', async () => {
 	return global.config;
 });
 ipcMain.on('setConfig', (event, config) => {
 	global.config = config;
 	console.log('New config: ' + JSON.stringify(global.config));
-});
-ipcMain.handle('chooseFolder', async (event) => {
-	return dialog.showOpenDialog(BrowserWindow.fromWebContents(event.sender), {
-        properties: ['openDirectory']
-    });
 });
 
 /*
@@ -41,6 +41,7 @@ const createWindow = () => {
 		width: 1000,
 		height: 750,
 		resizable: false,
+		icon: 'public/icons/jafo_small.png',
 		webPreferences: {
 			preload: path.join(__dirname, 'preload.js'),
 			nodeIntegration: true,

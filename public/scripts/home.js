@@ -8,6 +8,9 @@ function createBlankConfig(dir) {
     window.electronAPI.setConfig(config);
     leftBox.style.animation = "panLeft 1s forwards";
     rightBox.style.animation = "panRight 1s forwards";
+    setTimeout(() => {
+        window.location.href = "config.html";
+    }, 1000);
 }
 
 /*

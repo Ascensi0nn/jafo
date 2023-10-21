@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="../public/styles/global.css">
+    <link rel="stylesheet" href="../public/styles/config.css">
+
+    <title>Just Another File Organizer</title>
+</head>
+<body>
+    <div id="container">
+        <img id="arrow" src="../public/icons/arrow.png" onclick="handleBackClick()">
+        <div id="left-box">
+            <!-- <p class="title">Mode</p> -->
+            <div id="button-holder">
+                <p id="manual" class="selected" onclick="handleModeClick('manual')">Manual</p>
+                <p id="automatic" class="unselected" onclick="handleModeClick('automatic')">Automatic</p>
+            </div>
+            <!-- bucket icon -->
+            <p class="title">Buckets</p>
+            <!-- plus button -->
+            <div id="bucket-grid">
+
+            </div>
+        </div>
+        <div id="right-box">
+            <img id="logo-icon" src="../public/icons/jafo.png" draggable="false">
+        </div>
+    </div>
+
+    <div id="modal">
+        <!-- Modal content -->
+        <div id="modal-content">
+          <span id="close-modal">&times;</span>
+          <p>Some text in the Modal..</p>
+        </div>
+      
+      </div>
+
+    <script src="../public/scripts/global.js"></script>
+    <script src="../public/scripts/config.js"></script>
+</body>
+</html>

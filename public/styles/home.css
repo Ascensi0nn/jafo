@@ -1,25 +1,3 @@
-:root {
-    --text: gray;
-    --background: #363636;
-    --primary: #b197f9;
-    --secondary: #d7d7d7;
-    --accent: #581f91;
-}
-
-html, body {
-    background-color: var(--background);
-    height: 100%;
-    margin: 0;
-    overflow: hidden;
-}
-
-p {
-    font-family: "Arial Rounded MT Bold", "Helvetica Rounded", Arial, sans-serif;
-    font-weight: bold;
-    color: var(--background);
-    user-select: none;
-}
-
 /* left box */
 
 @keyframes panLeft {

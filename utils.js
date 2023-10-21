@@ -12,7 +12,9 @@ class Bucket {
 
     constructor(name, dir) {
         this.name = name;
-        this.dir = dir;
+        this.getAllFiles = () => {
+            console.log("test");
+        };
     }
 
 }

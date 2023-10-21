@@ -1,0 +1,148 @@
+@keyframes switchToAutomatic {
+    to {
+        clip-path: polygon(0 0, 100% 0, 100% 100%, 30% 100%);
+
+    }
+}
+
+@keyframes switchToManual {
+    to {
+        clip-path: polygon(30% 0, 100% 0, 100% 100%, 0% 100%);
+    }
+}
+
+#arrow {
+    position: absolute;
+    width: 50px;
+    top: 3%;
+    left: 3%;
+
+    animation: absoluteFromLeft var(--time);
+}
+#arrow:hover {
+    cursor: pointer;
+}
+
+#container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    height: 100%;
+    width: 100%;
+}
+
+/* right box */
+#right-box {
+    background-color: var(--accent);
+    clip-path: polygon(30% 0, 100% 0, 100% 100%, 0% 100%);
+    display: flex;
+    align-items: center;
+
+    animation: inFromRight var(--time);
+}
+
+#logo-icon {
+    height: 25%;
+    margin-left: auto;
+    margin-right: 5%;
+}
+
+/* left box :0 */
+#left-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    animation: inFromLeft var(--time);
+}
+
+#button-holder {
+    display: flex;
+    flex-direction: row;
+    width: 80%;
+    aspect-ratio: 6/1;
+    border-radius: 100px;
+    overflow: hidden;
+}
+
+#button-holder p {
+    width: 100%;
+    color: var(--text);
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5rem;
+}
+#button-holder p:first-child {
+    border-top-left-radius: 100px;
+    border-bottom-left-radius: 100px;
+    border-right: transparent;
+}
+#button-holder p:last-child {
+    border-top-right-radius: 100px;
+    border-bottom-right-radius: 100px;
+    border-left: transparent;
+}
+
+.selected {
+    background-color: var(--accent);
+    border: solid transparent 5px;
+}
+
+.unselected {
+    background-color: var(--background);
+    border: solid var(--accent) 5px;
+}
+
+.title {
+    color: var(--text);
+    font-size: 200%;
+}
+
+.holder {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width: 75%;
+    border-radius: 0.7rem;
+
+    font-size: 200%;
+}
+
+.bucket {
+    aspect-ratio: 6/1;
+    border-radius: 100px;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    border: solid transparent 5px;
+    vertical-align: center;
+}
+
+.assigned {
+    background-color: var(--text);
+}
+
+.assigned .bucket-txt {
+    color: var(--background);
+}
+
+.unassigned {
+    color: var(--text);
+    border: dotted var(--text) 5px;
+}
+
+.unassigned .bucket-txt {
+    color: var(--text);
+}
+
+#bucket-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    width: 80%;
+    aspect-ratio: 2/1;
+    gap: 2vw;
+}
