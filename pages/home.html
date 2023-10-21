@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="../public/styles/home.css">
+
+    <title>jafo - just another file organizer</title>
+    <script src="../public/scripts/home.js"></script>
+    <!-- font awesome -->
+</head>
+<body>
+    <div id="holder">
+        <div id="left-box" class="box">
+            <img id="logo-icon" src="../public/icons/elephant.png" alt="">
+        </div>
+        <div id="right-box" class="box">
+            <div id="open-file" class="button-holder" onclick="handleChooseFolder()">
+                <img id="folder-icon" src="../public/icons/folder.png" alt="">
+                <p id="open-file-txt">Choose Folder</p>
+            </div>
+            <div id="or-holder" class="button-holder">
+                <div class="line"></div>
+                <p id="or">or</p>
+                <div class="line"></div>
+            </div>
+            <div id="drag-folder-holder" class="button-holder">
+                <p id="drag-folder">Drag Folder</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

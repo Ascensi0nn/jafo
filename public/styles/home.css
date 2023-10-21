@@ -1,0 +1,96 @@
+:root {
+    --text: gray;
+    --background: #363636;
+    --primary: #b197f9;
+    --secondary: #d7d7d7;
+    --accent: #581f91;
+}
+
+html, body {
+    background-color: var(--background);
+    height: 100%;
+    margin: 0;
+}
+
+p {
+    font-family: "Arial Rounded MT Bold", "Helvetica Rounded", Arial, sans-serif;
+    font-weight: bold;
+    color: var(--background);
+}
+
+/* left box */
+
+#holder {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    height: 100%;
+    width: 100%;
+}
+
+#left-box {
+    background-color: var(--accent);
+    clip-path: polygon(0 0, 100% 0, 70% 100%, 0% 100%);
+}
+
+#logo-icon {
+    position: relative;
+    aspect-ratio: 1/1;
+    left: 50%;
+    top: 50%;
+    transform: translate(-70%, -50%);
+}
+
+/* right box */
+
+#right-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.button-holder {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width: 75%;
+    border-radius: 0.7rem;
+
+    font-size: 200%;
+}
+
+.line {
+    margin-left: auto;
+    margin-right: auto;
+    background-color: black;
+    height: 2px;
+    width: 100px;
+}
+
+#open-file {
+    background-color: var(--primary);
+}
+
+#folder-icon {
+    width: 10%;
+    aspect-ratio: 1/1;
+    color: white;
+}
+
+#open-file-txt {
+    margin-left: 5%;
+}
+
+#or {
+    color: black;
+    font-weight: normal;
+}
+
+#drag-folder-holder {
+    background-color: var(--accent);
+}
+
+#drag-folder {
+    color: var(--text);
+}

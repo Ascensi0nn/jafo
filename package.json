@@ -2,10 +2,9 @@
   "name": "jafo",
   "version": "1.0.0",
   "description": "just another file manager",
-  "main": "main.js",
+  "main": "./main.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "run": "main.js"
+    "start": "set NODE_ENV=development&&electron ."
   },
   "repository": {
     "type": "git",
@@ -18,6 +17,7 @@
   "author": "Owen Luts, Jack Barter",
   "license": "UNLICENSED",
   "devDependencies": {
-    "electron": "^27.0.2"
+    "electron": "^27.0.2",
+    "electron-reload": "^2.0.0-alpha.1"
   }
 }
