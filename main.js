@@ -1,5 +1,6 @@
 const { app, BrowserWindow, ipcMain, dialog } = require('electron');
 const path = require('path');
+const utils = require('./utils');
 const env = process.env.NODE_ENV || 'development'; 
   
 // If development environment
@@ -18,11 +19,15 @@ const global = {
 	config: null
 };
 
-
 ipcMain.handle('chooseFolder', async (event) => {
 	return dialog.showOpenDialog(BrowserWindow.fromWebContents(event.sender), {
         properties: ['openDirectory']
     });
+});
+ipcMain.handle('fillBuckets', async () => {
+	if(global.config.mode === "manual") return;
+
+	console.log(utils.getAllFiles(global.config.rootDir));
 });
 ipcMain.handle('getConfig', async () => {
 	return global.config;

@@ -4,8 +4,9 @@
     --primary: #b197f9;
     --secondary: #d7d7d7;
     --accent: #581f91;
-    
-    --time: 1s;
+
+    --font: "Arial Rounded MT Bold", "Helvetica Rounded", Arial, sans-serif;
+    --time: 0.5s;
 }
 
 html, body {
@@ -16,7 +17,7 @@ html, body {
 }
 
 p {
-    font-family: "Arial Rounded MT Bold", "Helvetica Rounded", Arial, sans-serif;
+    font-family: var(--font);
     font-weight: bold;
     color: var(--background);
     user-select: none;
@@ -28,9 +29,21 @@ p {
     }
 }
 
+@keyframes outToLeft {
+    to {
+        transform: translate(-150%);
+    }
+}
+
+@keyframes outToRight {
+    to {
+        transform: translate(100%);
+    }
+}
+
 @keyframes inFromLeft {
     from {
-        transform: translate(-100%);
+        transform: translate(-150%);
     }
     to {
         transform: translate(0);

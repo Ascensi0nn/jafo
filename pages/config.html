@@ -13,30 +13,35 @@
     <div id="container">
         <img id="arrow" src="../public/icons/arrow.png" onclick="handleBackClick()">
         <div id="left-box">
-            <!-- <p class="title">Mode</p> -->
             <div id="button-holder">
                 <p id="manual" class="selected" onclick="handleModeClick('manual')">Manual</p>
                 <p id="automatic" class="unselected" onclick="handleModeClick('automatic')">Automatic</p>
             </div>
-            <!-- bucket icon -->
-            <p class="title">Buckets</p>
-            <!-- plus button -->
-            <div id="bucket-grid">
-
-            </div>
+            <div id="title-holder">
+                <p class="title">Buckets</p>
+                <img id="create-bucket" src="../public/icons/add.png" onclick="handleOpenModal()">
+            </div>        
+            <div id="bucket-grid"></div>
         </div>
         <div id="right-box">
             <img id="logo-icon" src="../public/icons/jafo.png" draggable="false">
+            <button id="start" onclick="handleContinueClick()">Continue</button>
+        </div>
+        <div id="drop-down-holder">
+            <select id="drop-down">
+                <option value="dateCreated">Date Created</option>
+                <option value="fileType">File Type</option>
+            </select>
         </div>
     </div>
 
     <div id="modal">
-        <!-- Modal content -->
         <div id="modal-content">
-          <span id="close-modal">&times;</span>
-          <p>Some text in the Modal..</p>
+            <span id="close-modal" onclick="handleCloseModal()">&times;</span>
+            <p id="name-txt">New Bucket</p>
+            <input id="name-input" placeholder="bucket name" type="text" maxlength="12">
+            <button id="name-submit" onclick="handleCreateBucket()">Submit</button>
         </div>
-      
       </div>
 
     <script src="../public/scripts/global.js"></script>

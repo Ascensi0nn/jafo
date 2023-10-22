@@ -6,16 +6,16 @@ const dragFolder = document.getElementById("drag-folder-holder");
 function createBlankConfig(dir) {
     config = window.electronAPI.createConfig(dir, "manual", []);
     window.electronAPI.setConfig(config);
-    leftBox.style.animation = "panLeft 1s forwards";
-    rightBox.style.animation = "panRight 1s forwards";
+    leftBox.style.animation = "panLeft 0.5s forwards";
+    rightBox.style.animation = "panRight 0.5s forwards";
     setTimeout(() => {
         window.location.href = "config.html";
-    }, 1000);
+    }, 500);
 }
 
 /*
- Choose Folder
- */
+    Choose Folder
+*/
 
 async function handleChooseFolder() {
     const result = await window.electronAPI.chooseFolder();
@@ -24,8 +24,8 @@ async function handleChooseFolder() {
 }
 
 /*
- Drag Folder
- */
+    Drag Folder
+*/
 
 dragFolder.addEventListener('dragover', (e) => {
     e.preventDefault();
