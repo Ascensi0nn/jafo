@@ -69,7 +69,7 @@ function addCard(fileIndex, drag) {
 
     const card = document.createElement("div");
     card.classList.add("card");
-    if(drag) {
+    if(drag && config.buckets.length > 1) {
         card.draggable = true;
         card.ondragstart = () => {
             handleDrag(true);
@@ -78,9 +78,11 @@ function addCard(fileIndex, drag) {
             handleDrag(false);
         }
     }
+    
 
     const cardImg = document.createElement("img");
     cardImg.classList.add("card-img");
+    cardImg.draggable = false;
     const cardTxt = document.createElement("p");
     cardTxt.classList.add("card-txt");
 
