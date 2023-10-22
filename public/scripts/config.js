@@ -1,14 +1,10 @@
-let config = null;
-const modal = document.getElementById("modal");
-const leftBox = document.getElementById("left-box");
-const rightBox = document.getElementById("right-box");
 const titleHolder = document.getElementById("title-holder");
 const bucketGrid = document.getElementById("bucket-grid");
 const dropDownHolder = document.getElementById("drop-down-holder");
-
-async function loadConfig() {
-    config = await window.electronAPI.getConfig();
-}
+const modal = document.getElementById("modal"); 
+/*
+  Navigation
+*/
 
 function handleBackClick() {
     window.location.href = "home.html";
@@ -20,7 +16,7 @@ async function handleContinueClick() {
     rightBox.style.animation = (config.mode === "automatic" ? "automaticOutToRight" : "manualOutToRight") + " var(--time) forwards";
     dropDownHolder.style.animation = (config.mode === "automatic" ? "absoluteOutLeft" : "automaticOutRight") + " var(--time) forwards";
     setTimeout(() => {
-        window.location.href = "automatic.html";
+        window.location.href = config.mode === "automatic" ? "confirm.html" : "manual.html";
     }, 500);
 }
 

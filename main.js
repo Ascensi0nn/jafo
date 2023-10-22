@@ -47,7 +47,15 @@ ipcMain.handle('fillBuckets', async () => {
 			bucket.files.push(file);
 		});
 	}
-	console.log(global.config.buckets);
+});
+ipcMain.handle('sortBuckets', async () => {
+	for(const bucket of global.config.buckets) {
+		console.log(bucket.name + ": " + bucket.included);
+		if(!bucket.included) continue;
+
+		const bucketPath = utils.createBucketFolder(global.config.rootDir, bucket);
+		utils.moveBucketFiles(bucket, bucketPath);
+	}
 });
 ipcMain.handle('getConfig', async () => {
 	return global.config;

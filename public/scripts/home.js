@@ -1,6 +1,3 @@
-let config = null;
-const leftBox = document.getElementById("left-box");
-const rightBox = document.getElementById("right-box");
 const dragFolder = document.getElementById("drag-folder-holder");
 
 function createBlankConfig(dir) {

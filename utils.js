@@ -17,6 +17,7 @@ class Bucket {
     constructor(name) {
         this.name = name;
         this.files = [];
+        this.included = true;
     }
 
 }
@@ -48,7 +49,28 @@ function getBucket(buckets, name) {
     return null;
 }
 
+function createBucketFolder(dir, bucket) {
+    if(!bucket.included) return;
+
+    const bucketPath = path.join(dir, bucket.name);
+    fs.mkdirSync(bucketPath);
+    return bucketPath;
+}
+
+function moveBucketFiles(bucket, bucketPath) {
+    for(const file of bucket.files) {
+        const fileName = path.basename(file);
+        fs.renameSync(file, path.join(bucketPath, fileName));
+
+        const parentDir = path.dirname(file);
+        if(parentDir !== bucketPath && getAllFiles(parentDir).length === 0) {
+            console.log("Removing " + parentDir);
+            fs.rmdirSync(parentDir);
+        }
+    }
+}
+
 module.exports = {
     Config, Bucket, 
-    getAllFiles, isDirectory, getBucket 
+    getAllFiles, isDirectory, getBucket, createBucketFolder, moveBucketFiles
 };

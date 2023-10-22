@@ -1,0 +1,35 @@
+#holder {
+    display: flex;
+    justify-content: center;
+}
+
+#card {
+    width: 70%;
+    aspect-ratio: 4/3;
+    background-color: var(--text);
+    clip-path: polygon(100% 0, 100% 90%, 50% 100%, 0 90%, 0 0);
+}
+
+#modal-content {
+    width: 80%;
+}
+
+#back {
+    width: 35px;
+}
+
+.bucket-label {
+    color: var(--text);
+}
+
+.radio-holder {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+    justify-content: space-around;
+}
+
+#confirm-btn {
+    margin-top: 10vh;
+}
