@@ -1,30 +1,53 @@
-.filers{
-    width: 15px;
-    aspect-ratio: 1/1;
-    background-color: var(--primary);
-    border-radius: 15px;
-    position: absolute;
+:root {
+    --gap: 50px;
 }
 
+svg {
+    width: 80%;
+    height: 80%;
+    margin: auto;
+}
+
+.card {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 4/3;
+    margin-bottom: var(--gap);
+    background-color: var(--primary);
+    border-radius: 20px;
+}
+
+.filers {
+    width: 75px;
+    height: 75px;
+    background-color: var(--primary);
+    border-radius: 100px;
+    position: absolute;
+    display: flex;
+    top: 50%;
+    transform: translate(0, -50%);
+    transition: ease-in-out 0.1s;
+}
+.filers:hover {
+    background-color: var(--accent);
+}
 
 #check{
-    right: 5%
+    right: 3%
 }
 #uncheck{
-    left:5%;
+    left: 3%;
 }
 
 .file{
-    width:100%;
+    width: 100%;
     aspect-ratio:5/2;
     border-radius: 20px;
 }
 
-#file-holder{
-    display: flex;
-    flex-direction: column;
-    width: 80%;
-    gap:20px;
+#card-holder{
+    width: 60%;
+    transform: translate(0, -360px);
 }
 
 #holder{

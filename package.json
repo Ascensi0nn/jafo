@@ -19,5 +19,11 @@
   "devDependencies": {
     "electron": "^27.0.2",
     "electron-reload": "^2.0.0-alpha.1"
+  },
+  "dependencies": {
+    "curl": "^0.1.4",
+    "ffmpeg": "^0.0.4",
+    "filepreview-es6": "^1.0.8",
+    "imagemagick": "^0.1.3"
   }
 }

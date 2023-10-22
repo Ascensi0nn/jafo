@@ -1,5 +1,7 @@
+const os = require('os');
 const fs = require('fs');
 const path = require('path');
+const filepreview = require('filepreview-es6');
 
 class Config {
 
@@ -9,7 +11,7 @@ class Config {
         this.buckets = buckets;
         this.automaticType = null;
     }
-
+    
 }
 
 class Bucket {
@@ -64,13 +66,20 @@ function moveBucketFiles(bucket, bucketPath) {
 
         const parentDir = path.dirname(file);
         if(parentDir !== bucketPath && getAllFiles(parentDir).length === 0) {
-            console.log("Removing " + parentDir);
             fs.rmdirSync(parentDir);
         }
     }
 }
 
+async function generatePreviewFile(file) {
+    const fileWithoutExtension = path.basename(file, path.extname(file));
+    const outputFile = path.join(os.tmpdir(), "jafo", fileWithoutExtension + ".png");
+    await filepreview.generateSync(file, outputFile);
+
+    return fs.read;
+}
+
 module.exports = {
     Config, Bucket, 
-    getAllFiles, isDirectory, getBucket, createBucketFolder, moveBucketFiles
+    getAllFiles, isDirectory, getBucket, createBucketFolder, moveBucketFiles, generatePreviewFile
 };

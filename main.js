@@ -50,11 +50,17 @@ ipcMain.handle('fillBuckets', async () => {
 });
 ipcMain.handle('sortBuckets', async () => {
 	for(const bucket of global.config.buckets) {
-		console.log(bucket.name + ": " + bucket.included);
 		if(!bucket.included) continue;
 
 		const bucketPath = utils.createBucketFolder(global.config.rootDir, bucket);
 		utils.moveBucketFiles(bucket, bucketPath);
+	}
+});
+ipcMain.handle('getAllFilesBase64', async () => {
+	const files = utils.getAllFiles(global.config.rootDir);
+	for(const file of files) {
+		const outputFile = await utils.generatePreviewFile(file);
+		
 	}
 });
 ipcMain.handle('getConfig', async () => {

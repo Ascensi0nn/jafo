@@ -46,7 +46,7 @@ function loadBuckets() {
             if(radio === "Confirm") radioInput.checked = true;
             radioInput.onchange = () => {
                 radioInput.value = !radioInput.value;
-                bucket.included = radioInput.value;
+                bucket.included = radioInput.value === "true";
                 window.electronAPI.setConfig(config);
             };
 
