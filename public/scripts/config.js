@@ -1,5 +1,6 @@
 let config = null;
 const modal = document.getElementById("modal");
+const leftBox = document.getElementById("left-box");
 const rightBox = document.getElementById("right-box");
 const titleHolder = document.getElementById("title-holder");
 const bucketGrid = document.getElementById("bucket-grid");
@@ -15,6 +16,12 @@ function handleBackClick() {
 
 async function handleContinueClick() {
     await window.electronAPI.fillBuckets();
+    leftBox.style.animation = "outToLeft var(--time) forwards";
+    rightBox.style.animation = (config.mode === "automatic" ? "automaticOutToRight" : "manualOutToRight") + " var(--time) forwards";
+    dropDownHolder.style.animation = (config.mode === "automatic" ? "absoluteOutLeft" : "automaticOutRight") + " var(--time) forwards";
+    setTimeout(() => {
+        window.location.href = "automatic.html";
+    }, 500);
 }
 
 /*

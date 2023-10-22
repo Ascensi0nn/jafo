@@ -29,17 +29,27 @@ p {
     }
 }
 
+@keyframes absoluteOutLeft {
+    from {
+        left: 8.6%;
+    }
+    to {
+        left: -100%;
+    }
+}
+@keyframes absoluteOutRight {
+    to {
+        left: 100%;
+    }
+}
+
 @keyframes outToLeft {
     to {
         transform: translate(-150%);
     }
 }
 
-@keyframes outToRight {
-    to {
-        transform: translate(100%);
-    }
-}
+
 
 @keyframes inFromLeft {
     from {

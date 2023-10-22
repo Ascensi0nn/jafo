@@ -300,6 +300,20 @@
         left: 100%;
     }
 }
+@keyframes manualOutToRight {
+    to {
+        transform: translate(100%);
+    }
+}
+@keyframes automaticOutToRight {
+    from {
+        clip-path: polygon(0 0, 100% 0, 100% 100%, 30% 100%);
+    }
+    to {
+        transform: translate(100%);
+        clip-path: polygon(0 0, 100% 0, 100% 100%, 30% 100%);
+    }
+}
 
 #drop-down-holder {
     position: absolute;
