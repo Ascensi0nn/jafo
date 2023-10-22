@@ -41,4 +41,14 @@ function isDirectory(path) {
     return fs.lstatSync(path).isDirectory();
 }
 
-module.exports = { Config, Bucket, getAllFiles, isDirectory };
+function getBucket(buckets, name) {
+    for(const bucket of buckets) {
+        if(bucket.name === name) return bucket;
+    }
+    return null;
+}
+
+module.exports = {
+    Config, Bucket, 
+    getAllFiles, isDirectory, getBucket 
+};

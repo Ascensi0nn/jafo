@@ -3,7 +3,10 @@ const path = require('path');
 const utils = require('./utils');
 const env = process.env.NODE_ENV || 'development'; 
   
-// If development environment
+/*
+	HOT RELOAD
+*/
+
 if(env === 'development') { 
     require('electron-reload')(__dirname, { 
         electron: path.join(__dirname, 'node_modules', '.bin', 'electron'), 
@@ -25,9 +28,26 @@ ipcMain.handle('chooseFolder', async (event) => {
     });
 });
 ipcMain.handle('fillBuckets', async () => {
-	if(global.config.mode === "manual") return;
+	if(global.config.mode !== "automatic") return;
+	global.config.buckets = [];
 
-	console.log(utils.getAllFiles(global.config.rootDir));
+	const files = utils.getAllFiles(global.config.rootDir);
+	if(global.config.automaticType === "dateCreated") {
+		// TODO
+	} else if(global.config.automaticType === "fileType") {
+		files.forEach((file) => {
+			const fileExt = path.extname(file).substring(1);
+			let bucket = utils.getBucket(global.config.buckets, fileExt);
+	
+			if(bucket === null) {
+				bucket = new utils.Bucket(fileExt);
+				global.config.buckets.push(bucket);
+			}
+
+			bucket.files.push(file);
+		});
+	}
+	console.log(global.config.buckets);
 });
 ipcMain.handle('getConfig', async () => {
 	return global.config;

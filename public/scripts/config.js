@@ -3,18 +3,23 @@ const modal = document.getElementById("modal");
 const rightBox = document.getElementById("right-box");
 const titleHolder = document.getElementById("title-holder");
 const bucketGrid = document.getElementById("bucket-grid");
+const dropDownHolder = document.getElementById("drop-down-holder");
 
 async function loadConfig() {
     config = await window.electronAPI.getConfig();
 }
 
-/*
-    Btn Clicks
-*/
-
 function handleBackClick() {
     window.location.href = "home.html";
 }
+
+async function handleContinueClick() {
+    await window.electronAPI.fillBuckets();
+}
+
+/*
+    Manual
+*/
 
 function handleModeClick(mode) {
     if(config.mode === mode) return;
@@ -31,10 +36,12 @@ function handleModeClick(mode) {
         config.automaticType = "dateCreated";
         titleHolder.style.animation = "outToLeft var(--time) forwards";
         bucketGrid.style.animation = "outToLeft var(--time) forwards";
+        dropDownHolder.style.animation = "swoopLeft var(--time) forwards";
     } else {
         config.automaticType = null;
         titleHolder.style.animation = "inFromLeft var(--time) forwards";
         bucketGrid.style.animation = "inFromLeft var(--time) forwards";
+        dropDownHolder.style.animation = "swoopRight var(--time) forwards";
     }
 
     config.mode = mode;
@@ -51,14 +58,6 @@ function handleCreateBucket() {
 
     handleCloseModal();
 }
-
-async function handleContinueClick() {
-    await window.electronAPI.fillBuckets();
-}
-
-/*
-    Manual - Buckets
-*/
 
 function updateBuckets() {
     bucketGrid.innerHTML = "";
@@ -88,6 +87,16 @@ function updateBuckets() {
 
         bucketGrid.appendChild(bucketDiv);
     }
+}
+
+/*
+    Automatic
+*/
+
+function handleSortChange(radioBtn) {
+    if(config.mode !== "automatic") return;
+    config.automaticType = radioBtn.value;
+    window.electronAPI.setConfig(config);
 }
 
 /*
