@@ -2,10 +2,45 @@
     --gap: 50px;
 }
 
-svg {
-    width: 80%;
-    height: 80%;
+.yes-no svg {
+    width: 65%;
+    height: 65%;
     margin: auto;
+    fill: var(--background);
+}
+
+
+.yes-no:hover svg {
+    fill: var(--primary);
+}
+
+
+
+@keyframes disappear {
+    to{
+        opacity: 0;
+        pointer-events: none;
+    }
+}
+
+@keyframes appear {
+    to{
+        opacity: 1;
+        pointer-events: all;
+    }
+}
+
+.disappearLeft {
+    animation: absoluteOutLeft var(--time) forwards;
+}
+.disappearRight {
+    animation: absoluteOutRight var(--time) forwards;
+}
+.appearLeft {
+    animation: absoluteFromLeft var(--time) forwards;
+}
+.appearRight {
+    animation: absoluteFromRight var(--time) forwards;
 }
 
 .card {
@@ -13,9 +48,33 @@ svg {
     height: auto;
     aspect-ratio: 4/3;
     margin-bottom: var(--gap);
-    background-color: var(--primary);
+    border-top: solid var(--primary) 5px;
+    border-left: solid var(--primary) 5px;
+    border-right: solid var(--primary) 5px;
+    border-bottom: solid var(--accent) 5px;
+    background: linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.8) 100%, rgba(0,0,0,0.8) 100%);
     border-radius: 20px;
+    position: relative;
 }
+
+.card-img {
+    position: absolute;
+    max-height: 80%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.card-txt {
+    opacity: 1;
+    color: var(--text);
+    font-size: x-large;
+    font-weight: bold;
+    bottom: -15px;
+    left: 15px;
+    position: absolute;
+}
+
 
 .filers {
     width: 75px;
@@ -28,7 +87,7 @@ svg {
     transform: translate(0, -50%);
     transition: ease-in-out 0.1s;
 }
-.filers:hover {
+.filers:hover{
     background-color: var(--accent);
 }
 
@@ -47,7 +106,7 @@ svg {
 
 #card-holder{
     width: 60%;
-    transform: translate(0, -360px);
+    transform: translate(0, -350px);
 }
 
 #holder{
@@ -57,26 +116,45 @@ svg {
     justify-content: center;
 }
 
-@keyframes disappear {
-    from{
-        opacity: 1;
-    }
-    to{
-        opacity: 0;
-        pointer-events: none;
-    }
+.bucket {
+    position: absolute;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    font-family: var(--font);
+    background-color: var(--accent);
+    color: var(--primary);
+    font-weight: bold;
+    user-select: none;
+    width: 105px;
+    height: 105px;
+    word-break: break-all;
+    text-align: center;
 }
 
-@keyframes appear {
-    from{
-        opacity: 0;
-    }
-    to{
-        opacity: 1;
-        pointer-events: all;
-    }
+.bucket:nth-child(1) {
+    left: 5%;
+    top: 20%;
 }
-
-.disappear{
-    animation: disappear var(--time);
+.bucket:nth-child(2) {
+    right: 5%;
+    top: 20%;
+}
+.bucket:nth-child(3) {
+    left: 3%;
+    top: 50%;
+    transform: translate(-15px, -50%);
+}
+.bucket:nth-child(4) {
+    right: 3%;
+    top: 50%;
+    transform: translate(15px, -50%);
+}
+.bucket:nth-child(5) {
+    left: 5%;
+    top: 80%;
+}
+.bucket:nth-child(6) {
+    right: 5%;
+    top: 80%;
 }

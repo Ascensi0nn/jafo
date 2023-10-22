@@ -12,6 +12,10 @@ function handleBackClick() {
 
 function handleConfirmClick() {
     window.electronAPI.sortBuckets();
+    document.getElementById("modal").style.display = "none";
+    setTimeout(() => {
+        window.location.href = "home.html";
+    }, 3000);
 }
 
 /*
@@ -30,7 +34,11 @@ function loadBuckets() {
 
         const bucketLabel = document.createElement("p");
         bucketLabel.classList.add("bucket-label");
-        bucketLabel.innerText = bucket.files.length + " files in '" + bucket.name + "' bucket";
+        if(bucket.name === "__DELETE__") {
+            bucketLabel.innerText = bucket.files.length + " files to be deleted";
+        } else {
+            bucketLabel.innerText = bucket.files.length + " files in '" + bucket.name + "' bucket";
+        }
         radioHolder.appendChild(bucketLabel);
 
         for(const radio of radios) {
@@ -42,11 +50,9 @@ function loadBuckets() {
             radioInput.type = "radio";
             radioInput.name = "confirmation-" + bucket.name;
             radioInput.id = radio.toLowerCase();
-            radioInput.value = true;
             if(radio === "Confirm") radioInput.checked = true;
             radioInput.onchange = () => {
-                radioInput.value = !radioInput.value;
-                bucket.included = radioInput.value === "true";
+                bucket.included = !bucket.included;
                 window.electronAPI.setConfig(config);
             };
 
@@ -70,3 +76,6 @@ async function init() {
 }
 
 init();
+setTimeout(() => {
+    document.getElementById("elephant").style.display = "block";
+}, 500);

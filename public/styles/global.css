@@ -28,10 +28,15 @@ p {
         left: -100%;
     }
 }
+@keyframes absoluteFromRight {
+    from {
+        right: -100%;
+    }
+}
 
 @keyframes absoluteOutLeft {
     from {
-        left: 8.6%;
+        left: 0%;
     }
     to {
         left: -100%;
@@ -39,7 +44,7 @@ p {
 }
 @keyframes absoluteOutRight {
     to {
-        left: 100%;
+        right: -100%;
     }
 }
 

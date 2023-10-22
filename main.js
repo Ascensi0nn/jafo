@@ -32,36 +32,47 @@ ipcMain.handle('fillBuckets', async () => {
 	global.config.buckets = [];
 
 	const files = utils.getAllFiles(global.config.rootDir);
-	if(global.config.automaticType === "dateCreated") {
-		// TODO
-	} else if(global.config.automaticType === "fileType") {
-		files.forEach((file) => {
-			const fileExt = path.extname(file).substring(1);
-			let bucket = utils.getBucket(global.config.buckets, fileExt);
-	
-			if(bucket === null) {
-				bucket = new utils.Bucket(fileExt);
-				global.config.buckets.push(bucket);
-			}
+	files.forEach((file) => {
+		let bucketName = null;
+		if(global.config.automaticType === "dateCreated") {
+			bucketName = utils.getMonthCreated(file);
+		} else if(global.config.automaticType === "fileType") {
+			bucketName = path.extname(file).substring(1);
+		}
 
-			bucket.files.push(file);
-		});
-	}
+		let bucket = utils.getBucket(global.config.buckets, bucketName);
+	
+		if(bucket === null) {
+			bucket = new utils.Bucket(bucketName);
+			global.config.buckets.push(bucket);
+		}
+
+		bucket.files.push(file);
+	});
 });
 ipcMain.handle('sortBuckets', async () => {
 	for(const bucket of global.config.buckets) {
 		if(!bucket.included) continue;
+		if(bucket.files.length === 0) continue;
 
 		const bucketPath = utils.createBucketFolder(global.config.rootDir, bucket);
 		utils.moveBucketFiles(bucket, bucketPath);
 	}
+	utils.removeDeleteDir(global.config);
 });
-ipcMain.handle('getAllFilesBase64', async () => {
+ipcMain.handle('getAllFiles', async () => {
 	const files = utils.getAllFiles(global.config.rootDir);
+	const result = [];
+	
 	for(const file of files) {
-		const outputFile = await utils.generatePreviewFile(file);
-		
+		result.push({
+			name: path.basename(file),
+			path: file,
+			base64: utils.getFileAsBase64(file)
+		});
 	}
+
+	return result;
 });
 ipcMain.handle('getConfig', async () => {
 	return global.config;

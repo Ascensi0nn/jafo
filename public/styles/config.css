@@ -220,13 +220,13 @@
         left: 100%;
     }
     to {
-        left: 8.6%;
+        left: 0%;
     }
 }
 
 @keyframes swoopRight {
     from {
-        left: 8.6%;
+        left: 0%;
     }
     to {
         left: 100%;
@@ -252,6 +252,7 @@
     display: flex;
     flex-direction: column;
     left: 100%;
+    padding-left: 8.6%;
     justify-content: center;
     margin-top: auto;
     margin-bottom: auto;

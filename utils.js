@@ -1,7 +1,6 @@
 const os = require('os');
 const fs = require('fs');
 const path = require('path');
-const filepreview = require('filepreview-es6');
 
 class Config {
 
@@ -10,9 +9,7 @@ class Config {
         this.mode = mode;
         this.buckets = buckets;
         this.automaticType = null;
-    }
-    
-}
+    }}
 
 class Bucket {
 
@@ -35,7 +32,7 @@ function getAllFiles(dir) {
         } else {
             totalFiles.push(filePath);
         }
-	});
+    });
 
     return totalFiles;
 }
@@ -71,15 +68,28 @@ function moveBucketFiles(bucket, bucketPath) {
     }
 }
 
-async function generatePreviewFile(file) {
-    const fileWithoutExtension = path.basename(file, path.extname(file));
-    const outputFile = path.join(os.tmpdir(), "jafo", fileWithoutExtension + ".png");
-    await filepreview.generateSync(file, outputFile);
+function removeDeleteDir(config) {
+    const deleteBucket = getBucket(config.buckets, "__DELETE__");
+    if(deleteBucket === null) return;
 
-    return fs.read;
+    const deleteBucketDir = path.join(config.rootDir, "__DELETE__");
+    for(const file of deleteBucket.files) {
+        fs.rmSync(path.join(deleteBucketDir, path.basename(file)));
+    }
+    fs.rmdirSync(deleteBucketDir);
+}
+
+const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+function getMonthCreated(file) {
+    const created = fs.lstatSync(file).birthtime;
+    return months[created.getMonth()] + " " + created.getFullYear();
+}
+
+function getFileAsBase64(file) {
+    return fs.readFileSync(file, { "encoding": "base64" });
 }
 
 module.exports = {
     Config, Bucket, 
-    getAllFiles, isDirectory, getBucket, createBucketFolder, moveBucketFiles, generatePreviewFile
+    getAllFiles, isDirectory, getBucket, createBucketFolder, moveBucketFiles, removeDeleteDir, getMonthCreated, getFileAsBase64
 };

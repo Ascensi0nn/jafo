@@ -16,6 +16,11 @@ async function handleContinueClick() {
     rightBox.style.animation = (config.mode === "automatic" ? "automaticOutToRight" : "manualOutToRight") + " var(--time) forwards";
     dropDownHolder.style.animation = (config.mode === "automatic" ? "absoluteOutLeft" : "automaticOutRight") + " var(--time) forwards";
     setTimeout(() => {
+        if(config.mode === "manual") {
+            config.buckets.push(window.electronAPI.createBucket("__DELETE__"));
+            window.electronAPI.setConfig(config);
+        }
+        
         window.location.href = config.mode === "automatic" ? "confirm.html" : "manual.html";
     }, 500);
 }
@@ -53,7 +58,7 @@ function handleModeClick(mode) {
 
 function handleCreateBucket() {
     const name = document.getElementById("name-input").value.trim();
-    if(config.buckets.length < 6 && name.length > 0) {
+    if(getBucket(config.buckets, name) === null && config.buckets.length < 6 && name.length > 0) {
         config.buckets.push(window.electronAPI.createBucket(name));
         window.electronAPI.setConfig(config);
         updateBuckets();
