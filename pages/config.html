@@ -17,25 +17,31 @@
                 <p id="manual" class="selected" onclick="handleModeClick('manual')">Manual</p>
                 <p id="automatic" class="unselected" onclick="handleModeClick('automatic')">Automatic</p>
             </div>
-            <div id="title-holder">
-                <p class="title">Buckets</p>
-                <img id="create-bucket" src="../public/icons/add.png" onclick="handleOpenModal()">
-            </div>
-            <div id="bucket-grid"></div>
         </div>
         <div id="right-box">
             <img id="logo-icon" src="../public/icons/jafo.png" draggable="false">
             <button class="button" id="start" onclick="handleContinueClick()">Continue</button>
         </div>
-        <div id="drop-down-holder">
-            <p id="sort-by">Sort By</p>
-            <div style="display: flex; flex-direction: row;">
-                <input checked class="radio" id="date-created" type="radio" name="sort" onchange="handleSortChange(this)" value="dateCreated"/>
-                <label class="label" for="date-created">Date Created</label>
+
+        <!-- manual and automatic holders -->
+        <div id="slider">
+            <div>
+                <div id="title-holder">
+                    <p class="title">Buckets</p>
+                    <img id="create-bucket" src="../public/icons/add.png" onclick="handleOpenModal()">
+                </div>
+                <div id="bucket-grid"></div>
             </div>
-            <div style="display: flex; flex-direction: row;">
-                <input class="radio" id="file-type" type="radio" name="sort" onchange="handleSortChange(this)" value="fileType"/>
-                <label class="label" for="file-type">File Type</label>
+            <div id="drop-down-holder">
+                <p id="sort-by">Sort By</p>
+                <div style="display: flex; flex-direction: row;">
+                    <input checked class="radio" id="date-created" type="radio" name="sort" onchange="handleSortChange(this)" value="dateCreated"/>
+                    <label class="label" for="date-created">Date Created</label>
+                </div>
+                <div style="display: flex; flex-direction: row;">
+                    <input class="radio" id="file-type" type="radio" name="sort" onchange="handleSortChange(this)" value="fileType"/>
+                    <label class="label" for="file-type">File Type</label>
+                </div>
             </div>
         </div>
     </div>

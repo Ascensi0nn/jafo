@@ -1,10 +1,12 @@
 {
   "name": "jafo",
-  "version": "1.0.0",
-  "description": "just another file manager",
+  "version": "1.0.1",
+  "description": "just another file organizer",
   "main": "./main.js",
   "scripts": {
-    "start": "set NODE_ENV=development&&electron ."
+    "start": "electron-forge start",
+    "package": "electron-forge package",
+    "make": "electron-forge make"
   },
   "repository": {
     "type": "git",
@@ -17,10 +19,17 @@
   "author": "Owen Luts, Jack Barter",
   "license": "UNLICENSED",
   "devDependencies": {
+    "@electron-forge/cli": "^6.4.2",
+    "@electron-forge/maker-deb": "^6.4.2",
+    "@electron-forge/maker-rpm": "^6.4.2",
+    "@electron-forge/maker-squirrel": "^6.4.2",
+    "@electron-forge/maker-zip": "^6.4.2",
+    "@electron-forge/plugin-auto-unpack-natives": "^6.4.2",
     "electron": "^27.0.2",
     "electron-reload": "^2.0.0-alpha.1"
   },
   "dependencies": {
+    "electron-squirrel-startup": "^1.0.0",
     "image-thumbnail": "^1.0.15"
   }
 }

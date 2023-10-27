@@ -1,6 +1,7 @@
 const titleHolder = document.getElementById("title-holder");
 const bucketGrid = document.getElementById("bucket-grid");
 const dropDownHolder = document.getElementById("drop-down-holder");
+const slider = document.getElementById("slider");
 const modal = document.getElementById("modal"); 
 /*
   Navigation
@@ -42,14 +43,10 @@ function handleModeClick(mode) {
     rightBox.style.animation = (mode === "manual" ? "switchToManual" : "switchToAutomatic") + " var(--time) forwards";
     if(mode === "automatic") {
         config.automaticType = "dateCreated";
-        titleHolder.style.animation = "outToLeft var(--time) forwards";
-        bucketGrid.style.animation = "outToLeft var(--time) forwards";
-        dropDownHolder.style.animation = "swoopLeft var(--time) forwards";
+        slider.style.animation = "outToLeft var(--time) forwards";
     } else {
         config.automaticType = null;
-        titleHolder.style.animation = "inFromLeft var(--time) forwards";
-        bucketGrid.style.animation = "inFromLeft var(--time) forwards";
-        dropDownHolder.style.animation = "swoopRight var(--time) forwards";
+        slider.style.animation = "inFromLeft var(--time) forwards";
     }
 
     config.mode = mode;

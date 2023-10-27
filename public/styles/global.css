@@ -5,8 +5,19 @@
     --secondary: #d7d7d7;
     --accent: #581f91;
 
-    --font: "Arial Rounded MT Bold", "Helvetica Rounded", Arial, sans-serif;
+    font-family: "Arial Rounded MT Bold", "Helvetica Rounded", Arial, sans-serif;
+    font-weight: bold;
+    color: var(--background);
     --time: 0.5s;
+
+    --font-scale: 1.333;
+    --p: 1rem;
+    --h5: calc(var(--p) * var(--font-scale));
+    --h4: calc(var(--h5) * var(--font-scale));
+    --h3: calc(var(--h4) * var(--font-scale));
+    --h2: calc(var(--h3) * var(--font-scale));
+    --h1: calc(var(--h2) * var(--font-scale));
+    margin: 0;
 }
 
 html, body {
@@ -17,10 +28,22 @@ html, body {
 }
 
 p {
-    font-family: var(--font);
-    font-weight: bold;
-    color: var(--background);
-    user-select: none;
+    font-size: var(--p);
+}
+h1 {
+    font-size: var(--h1);
+}
+h2 {
+    font-size: var(--h2);
+}
+h3 {
+    font-size: var(--h3);
+}
+h4 {
+    font-size: var(--h4);
+}
+h5 {
+    font-size: var(--h5);
 }
 
 @keyframes absoluteFromLeft {
@@ -50,15 +73,13 @@ p {
 
 @keyframes outToLeft {
     to {
-        transform: translate(-150%);
+        transform: translate(-50%);
     }
 }
 
-
-
 @keyframes inFromLeft {
     from {
-        transform: translate(-150%);
+        transform: translate(-50%);
     }
     to {
         transform: translate(0);
@@ -77,6 +98,20 @@ p {
 @keyframes slideInFromTop {
     from {
         transform: translate(0%, -100%);
+    }
+}
+
+@keyframes disappear {
+    to {
+        opacity: 0;
+        pointer-events: none;
+    }
+}
+
+@keyframes appear {
+    to {
+        opacity: 1;
+        pointer-events: all;
     }
 }
 
@@ -183,5 +218,4 @@ p {
     margin-bottom: 5vh;
     margin-left: auto;
     margin-right: 5%;
-
 }

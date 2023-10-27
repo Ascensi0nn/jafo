@@ -58,8 +58,8 @@
 #left-box {
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
+    margin-top: 40%;
 
     animation: inFromLeft var(--time);
 }
@@ -160,6 +160,8 @@
     width: 80%;
     aspect-ratio: 2/1;
     gap: 2vw;
+    margin-left: auto;
+    margin-right: auto;    
 }
 
 #title-holder {
@@ -215,23 +217,6 @@
 
 /* automatic */
 
-@keyframes swoopLeft {
-    from {
-        left: 100%;
-    }
-    to {
-        left: 0%;
-    }
-}
-
-@keyframes swoopRight {
-    from {
-        left: 0%;
-    }
-    to {
-        left: 100%;
-    }
-}
 @keyframes manualOutToRight {
     to {
         transform: translate(100%);
@@ -248,15 +233,9 @@
 }
 
 #drop-down-holder {
-    position: absolute;
     display: flex;
     flex-direction: column;
-    left: 100%;
-    padding-left: 8.6%;
-    justify-content: center;
-    margin-top: auto;
-    margin-bottom: auto;
-    top: 41.8%;
+    align-items: center;
     z-index: 1;
 }
 
@@ -265,4 +244,13 @@
     font-size: 200%;
     margin: 0;
     margin-bottom: 5%;
+}
+
+#slider {
+    position: absolute;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    top: 50%;
+    width: 100%;
+    height: auto;
 }
